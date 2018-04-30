@@ -28,7 +28,21 @@ One of the key motivation for creating the Apache Spark Project, was the observa
 In Hadoop it was simpler the memory really wasn't used for much beyond just a temporary buffer and was really used to stream data from disks into the computer, perform the map and reduce operations, and stream the results back into the disk.
 
 
-Changes that have occured when movnng from Hadoop to spark:
+Changes that have occured when movnng from Hadoop to spark:(Hadoop -> Spark)
+1. K-V pair -> Reselient Distributed DataSet (RDD).(allow yo to store data in other forms.)
+2. M-R -> General ops 
+     - TRANSFORMS (INTERMEDIATE OPS) (MAP. FILTER, JOIN)
+     - ACTIONS (TERMONAL OPS) REDUCE, COLLECT)
+     taken these concepts pretty much sililar to javastreams
+     
+Some key innovation:
+1. Lazy evaluation:
+2. Caching (Memory):
+     
+     
+     
+     
+
 
 
 
