@@ -32,21 +32,24 @@ Changes that have occured when movnng from Hadoop to spark:(Hadoop -> Spark)
 1. K-V pair -> Reselient Distributed DataSet (RDD).(allow yo to store data in other forms.)
 2. M-R -> General ops 
      - TRANSFORMS (INTERMEDIATE OPS) (MAP, FILTER, JOIN)
-     - ACTIONS (TERMONAL OPS) REDUCE, COLLECT)
+     - ACTIONS (TERMONAL OPS) REDUCE, COUNT, COLLECT)
      taken these concepts pretty much sililar to javastreams
      
 Some key innovation:
-1. Lazy evaluation:
+1. Lazy evaluation: Intermediate operations are performed lazily i.e. their evaluation is postponed to the point when a terminal
+actions needs to be performed.
+
 2. Caching (Memory): When you pull in the data into memory you can keep it there and use it for multiple operations.multiple transforms,
 ending with an action, while the data is in memory. This gives a significanmt prders of magnitude performance improvenment becuase you are reading and writing data from memory for these intermediate operations instead of going to disk each time.
 Sometimes in cloud computing it can be more expensive to use nodes with large  amount of memory than to use nodes with less memory. si thats a bit of a cost trade off but the performnance benefit is very clear.
 
 you can write Spark programs in java becuase after all that infrastructure all runs on the same java virtual machine,
+Implementation of Word count example in Spark using Java APIs:
 1. Create new java spark context.
 2. Input = sc.textfile ("here you can provide file name") were each line is object in RDD.
 3. Words = input.flatmap ((line -> line.split("_"))) the map operation as to how we want to split a line into words.
-4. pairs = words.maptopair((x) -> new tuple2(x,1)) represents one occurence of the word.
-5. counts = pairs.reduceByKey((x,y) -> x+y )   to finally accumulate the count
+4. pairs = words.maptopair((x) -> new tuple2(x,1)) represents one occurence of the word.emits pairs of the form (word, 1)
+5. counts = pairs.reduceByKey((x,y) -> x+y )  to finally accumulate the count
 here we have specified the map and reduce functions as lambdas.
 
 we can really take the idea behind something like java streams and extend that to general operations and distributed data sets in the spark framwork, which could include the map reduce operations that you can do with Hadoop, but could include many more kinds of operations and with this ability to cache data in memory, we see opportunities to perform all kind of algorithms, including very interesting and machine learning algorithms on distributed computers.
