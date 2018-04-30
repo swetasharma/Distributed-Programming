@@ -1,7 +1,6 @@
 # Distributed-Programming
 
-The structure of dictributed computer and there are processors P0, P1. and there are multiple computers, each with cores, connected through a network, amd also containing storage in each computer node.
-
+The structure of dictributed computer: there are processors P0, P1. and there are multiple computers, each with cores, connected through a network, amd also containing storage in each computer node.
 
 Map - Reduce: pattern of parallel functional programming that has been bery successfule in enabling big data comoutrations.
 Grouping is performed automatically by the map reduce framework.
@@ -25,6 +24,11 @@ Input K-V pairs -> Intermeduiate key value pairs -> group -> reduce -> output ke
 The main benefit is that uou have large volumes of data, you pull it in, perform the map function, perform the reduce,and then push out the large volumes of data back to you storage and you can really processiign terabytes of data quite easily that way. This has been used for algorithms such as page rank for generating index for web searches.
 
 Apache Spark:
+One of the key motivation for creating the Apache Spark Project, was the observation that each of these computers also has memory.and when yuou are procesing data you dont have to always read and write out of disk. If you have enough mememory you can keep the intermediate values in memory and then perform repeated computations on them.
+In Hadoop it was simpler the memory really wasn't used for much beyond just a temporary buffer and was really used to stream data from disks into the computer, perform the map and reduce operations, and stream the results back into the disk.
+
+
+Changes that have occured when movnng from Hadoop to spark:
 
 
 
