@@ -1,5 +1,8 @@
 # Distributed-Programming
 
+The structure of dictributed computer and there are processors P0, P1. and there are multiple computers, each with cores, connected through a network, amd also containing storage in each computer node.
+
+
 Map - Reduce: pattern of parallel functional programming that has been bery successfule in enabling big data comoutrations.
 Grouping is performed automatically by the map reduce framework.
 It folds or reduces all those values to obtain a single output key-value pair for each key k
@@ -20,6 +23,16 @@ large document could be distribuited as key value pair
 Input K-V pairs -> Intermeduiate key value pairs -> group -> reduce -> output key valu pairs popular exampple is word count(used for document mining and text mining)
 
 The main benefit is that uou have large volumes of data, you pull it in, perform the map function, perform the reduce,and then push out the large volumes of data back to you storage and you can really processiign terabytes of data quite easily that way. This has been used for algorithms such as page rank for generating index for web searches.
+
+Apache Spark:
+
+
+
+
+
+
+
+
 
 
 
